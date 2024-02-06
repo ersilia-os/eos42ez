@@ -3,7 +3,7 @@
     "Slug": "antibiotics-ai-cytotox",
     "Status": "In progress",
     "Title": "Human cytotoxicity endpoints",
-    "Description": [
+    "Description": 
         "The authors tested the dataset of 39312 compounds from the antibiotics-ai model (eos18ie) against several cytotoxicity endpoints; human liver carcinoma cells (HepG2)",
         "human primary skeletal muscle cells (HSkMCs) and human lung fibroblast cells (IMR-90). Cellular viability was measured after 2\u20133 days of treatment with each compound at 10 \u03bcM",
         "and activities were binarized using a 90% cell viability cut-off. 3",
@@ -11,8 +11,7 @@
         "1",
         "490 (3.8%) and 3",
         "447 (8.8%) compounds classified as cytotoxic for HepG2 cells",
-        "HSk-MCs and IMR-90 cells."
-    ],
+        "HSk-MCs and IMR-90 cells.",
     "Mode": "Pretrained",
     "Task": ["Classification"],
     "Input": ["Compound"],
