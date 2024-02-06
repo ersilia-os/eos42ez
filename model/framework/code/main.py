@@ -75,5 +75,5 @@ outputs3 = my_model3(smiles_list)
 with open(output_file, "w") as f:
     writer = csv.writer(f)
     writer.writerow(["HepG2", "HSkMC", "IMR_90"])  # header with column names
-    for o1, o2 in zip(outputs1, outputs2, outputs3):
+    for o1, o2, o3 in zip(outputs1, outputs2, outputs3):
         writer.writerow([o1, o2, o3])
