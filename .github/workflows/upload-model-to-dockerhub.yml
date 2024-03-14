@@ -7,8 +7,8 @@ jobs:
     if: ${{ github.repository != 'ersilia-os/eos-template' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Log disck space
-        run: df -h
+      - name: Log disk space
+        run: sudo df -h
 
       # https://github.com/docker/setup-qemu-action
       - name: Set up QEMU
@@ -42,7 +42,7 @@ jobs:
           df -h
       
       - name: Log disk space again
-        run: df -h
+        run: sudo df -h
         
       - name: Generate the Dockerfile
         id: generate-dockerfile
@@ -52,7 +52,10 @@ jobs:
           wget https://raw.githubusercontent.com/ersilia-os/ersilia/master/.github/scripts/place_a_dockerfile_in_current_eos_repo.py
           python -m pip install requests
           python place_a_dockerfile_in_current_eos_repo.py $REPO_NAME
-                                          
+      
+      - name: Log disk space again?
+        run: sudo df -h
+        
       - name: Build and push
         id: buildMultiple
         continue-on-error: true
