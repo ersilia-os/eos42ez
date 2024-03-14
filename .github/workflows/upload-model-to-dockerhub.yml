@@ -5,7 +5,7 @@ on:
 jobs:
   upload_model_to_dockerhub:
     if: ${{ github.repository != 'ersilia-os/eos-template' }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Log disk space
         run: sudo df -h
@@ -34,13 +34,22 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
           lfs: 'true'
 
-      - name: Clean Disk Space
-        run: |
-          df -h
-          sudo swapoff -a
-          sudo rm -rf /swapfile /usr/share/dotnet /usr/local/lib/android /opt/ghc
-          df -h
       
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: true
+          
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
+          
       - name: Log disk space again
         run: sudo df -h
         
