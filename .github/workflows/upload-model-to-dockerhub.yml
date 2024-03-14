@@ -2,16 +2,14 @@ name: Upload model to DockerHub
 on:
   workflow_dispatch:
   
-  workflow_run:
-    workflows: ["Upload model to S3"]
-    types:
-      - completed
-  
 jobs:
   upload_model_to_dockerhub:
     if: ${{ github.repository != 'ersilia-os/eos-template' && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Log disck space
+        run: df -h
+
       # https://github.com/docker/setup-qemu-action
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -42,7 +40,10 @@ jobs:
           sudo swapoff -a
           sudo rm -rf /swapfile /usr/share/dotnet /usr/local/lib/android /opt/ghc
           df -h
-          
+      
+      - name: Log disk space again
+        run: df -h
+        
       - name: Generate the Dockerfile
         id: generate-dockerfile
         env:
