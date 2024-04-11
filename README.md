@@ -26,7 +26,7 @@ The authors tested the dataset of 39312 compounds from the antibiotics-ai model 
 ## Ersilia model URLs
 * [GitHub](https://github.com/ersilia-os/eos42ez)
 * [AWS S3](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip)
-* [DockerHub](https://hub.docker.com/r/ersiliaos/eos42ez) (AMD64, ARM64)
+* [DockerHub](https://hub.docker.com/r/ersiliaos/eos42ez) (AMD64)
 
 ## Citation
 
