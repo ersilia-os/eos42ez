@@ -10,7 +10,9 @@ RUN pip install torch==2.2.0
 RUN pip install pandas==2.2.0
 RUN pip install tensorboardX==2.0
 RUN pip install hyperopt==0.2.7
-RUN conda install -c conda-forge xorg-libxrender xorg-libxtst
+RUN pip install protobuf==3.20.0
+RUN conda install -c conda-forge xorg-libxrender=0.9.12
+RUN conda install -c conda-forge xorg-libxtst=1.2.5
 
 WORKDIR /repo
 COPY . /repo
