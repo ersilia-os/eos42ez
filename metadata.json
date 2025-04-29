@@ -3,32 +3,43 @@
     "Slug": "antibiotics-ai-cytotox",
     "Status": "Ready",
     "Title": "Human cytotoxicity endpoints",
-    "Description": "The authors tested the dataset of 39312 compounds from the antibiotics-ai model (eos18ie) against several cytotoxicity endpoints; human liver carcinoma cells (HepG2), human primary skeletal muscle cells (HSkMCs) and human lung fibroblast cells (IMR-90). Cellular viability was measured after 20133 days of treatment with each compound at 10 \u03bcM and activities were binarized using a 90% cell viability cut-off. 341 (8.5%), 490 (3.8%) and 447 (8.8%) compounds classified as cytotoxic for HepG2 cells, HSk-MCs and IMR-90 cells",
-    "Mode": "Pretrained",
-    "Task": [
-        "Classification"
-    ],
+    "Description": "The authors tested the dataset of 39312 compounds used to train the antibiotics-ai model (eos18ie) against several cytotoxicity endpoints; human liver carcinoma cells (HepG2), human primary skeletal muscle cells (HSkMCs) and human lung fibroblast cells (IMR-90). Cellular viability was measured after 20133 days of treatment with each compound at 10 \u03bcM and activities were binarized using a 90% cell viability cut-off. 341 (8.5%), 490 (3.8%) and 447 (8.8%) compounds classified as cytotoxic for HepG2 cells, HSk-MCs and IMR-90 cells\n",
+    "Source": "Local",
+    "Source Type": "External",
     "Input": [
         "Compound"
     ],
+    "Input Dimension": 1,
+    "Task": "Annotation",
+    "Subtask": "Activity prediction",
+    "Biomedical Area": [
+        "ADMET"
+    ],
+    "Target Organism": [
+        "Homo sapiens"
+    ],
     "Output": [
-        "Probability"
+        "Score"
     ],
-    "Output Type": [
-        "Float"
-    ],
-    "Output Shape": "Single",
+    "Output Dimension": 3,
+    "Output Consistency": "Fixed",
     "Interpretation": "Predicting cytotoxicity in  human liver carcinoma cells (HepG2), human primary skeletal muscle cells (HSkMCs) and human lung fibroblast cells (IMR-90)",
     "Tag": [
-        "Cytotoxicity",
-        "ESKAPE"
+        "Cytotoxicity"
     ],
     "Publication": "https://www.nature.com/articles/s41586-023-06887-8",
+    "Publication Type": "Peer reviewed",
+    "Publication Year": 2023,
     "Source Code": "https://github.com/felixjwong/antibioticsai",
     "License": "MIT",
-    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip",
+    "Contributor": "Richiio",
+    "Incorporation Date": "2024-02-05",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos42ez",
     "Docker Architecture": [
         "AMD64"
+    ],
+    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip",
+    "Deployment": [
+        "Local"
     ]
 }
