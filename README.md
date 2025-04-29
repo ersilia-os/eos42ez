@@ -37,13 +37,18 @@ Below are the **Output Columns** of the model:
 - **Source:** `Local`
 - **Source Type:** `External`
 - **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos42ez](https://hub.docker.com/r/ersiliaos/eos42ez)
-- **Docker Architecture:** `AMD64`
+- **Docker Architecture:** `AMD64`, `ARM64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip)
 
 ### Resource Consumption
 - **Model Size (Mb):** `1401`
 - **Environment Size (Mb):** `5601`
+- **Image Size (Mb):** `7155.2`
 
+**Computational Performance (seconds):**
+- 4 inputs: `127.04`
+- 20 inputs: `139.23`
+- 100 inputs: `243.68`
 
 ### References
 - **Source Code**: [https://github.com/felixjwong/antibioticsai](https://github.com/felixjwong/antibioticsai)
