@@ -47,7 +47,7 @@ Below are the **Output Columns** of the model:
 
 **Computational Performance (seconds):**
 - 10 inputs: `51.24`
-- 100 inputs: `89.73`
+- 100 inputs: `89.67`
 - 10000 inputs: `-1`
 
 ### References
