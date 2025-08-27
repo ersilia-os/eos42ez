@@ -2,8 +2,7 @@
 
 The authors tested the dataset of 39312 compounds used to train the antibiotics-ai model (eos18ie) against several cytotoxicity endpoints; human liver carcinoma cells (HepG2), human primary skeletal muscle cells (HSkMCs) and human lung fibroblast cells (IMR-90). Cellular viability was measured after 20133 days of treatment with each compound at 10 μM and activities were binarized using a 90% cell viability cut-off. 341 (8.5%), 490 (3.8%) and 447 (8.8%) compounds classified as cytotoxic for HepG2 cells, HSk-MCs and IMR-90 cells
 
-This model was incorporated on 2024-02-05.
-
+This model was incorporated on 2024-02-05.Last packaged on 2025-08-27.
 
 ## Information
 ### Identifiers
@@ -44,11 +43,11 @@ Below are the **Output Columns** of the model:
 ### Resource Consumption
 - **Model Size (Mb):** `1401`
 - **Environment Size (Mb):** `5643`
-- **Image Size (Mb):** `7120.38`
+- **Image Size (Mb):** `7124.8`
 
 **Computational Performance (seconds):**
-- 10 inputs: `51.24`
-- 100 inputs: `89.67`
+- 10 inputs: `52.59`
+- 100 inputs: `90.69`
 - 10000 inputs: `-1`
 
 ### References
