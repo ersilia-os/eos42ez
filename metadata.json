@@ -37,6 +37,8 @@
     "License": "MIT",
     "Contributor": "Richiio",
     "Incorporation Date": "2024-02-05",
+    "Last Packaging Date": "2025-08-27",
+    "Release": "v1.0.0",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos42ez",
     "Docker Architecture": [
@@ -45,11 +47,11 @@
     ],
     "Model Size": 1401.0,
     "Environment Size": 5643.0,
-    "Image Size": 7120.38,
-    "Computational Performance 1": 51.24,
-    "Computational Performance 2": 48.59,
-    "Computational Performance 3": 89.67,
-    "Computational Performance 4": 775.58,
+    "Image Size": 7124.8,
+    "Computational Performance 1": 52.59,
+    "Computational Performance 2": 49.16,
+    "Computational Performance 3": 90.69,
+    "Computational Performance 4": 748.25,
     "Computational Performance 5": -1.0,
     "Docker Pack Method": "FastAPI"
 }
