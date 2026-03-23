@@ -15,8 +15,8 @@ HSK_model = os.path.abspath(os.path.join(root, "..", "..", "checkpoints", "cytot
 IMR_model = os.path.abspath(os.path.join(root, "..", "..", "checkpoints", "cytotox_imr90"))
 
 def my_model1(smiles_list):
-    
-    smiles_list_list= [[smiles] for smiles in smiles_list]  
+
+    smiles_list_list= [[smiles] for smiles in smiles_list]
     arguments = [
     '--test_path', '/dev/null',
     '--preds_path', '/dev/null',
@@ -30,8 +30,8 @@ def my_model1(smiles_list):
     return preds
 
 def my_model2(smiles_list):
-    
-    smiles_list_list= [[smiles] for smiles in smiles_list]  
+
+    smiles_list_list= [[smiles] for smiles in smiles_list]
     arguments = [
     '--test_path', '/dev/null',
     '--preds_path', '/dev/null',
@@ -45,8 +45,8 @@ def my_model2(smiles_list):
     return preds
 
 def my_model3(smiles_list):
-    
-    smiles_list_list= [[smiles] for smiles in smiles_list]  
+
+    smiles_list_list= [[smiles] for smiles in smiles_list]
     arguments = [
     '--test_path', '/dev/null',
     '--preds_path', '/dev/null',
@@ -69,13 +69,19 @@ with open(input_file, "r") as f:
     next(reader)  # skip header
     smiles_list = [r[0] for r in reader]
 
-# Run models and extract desired values
-outputs1 = extract_values(my_model1(smiles_list))
-outputs2 = extract_values(my_model2(smiles_list))
-outputs3 = extract_values(my_model3(smiles_list))
+# Run models per molecule with try/except safety net
+results = []
+for smi in smiles_list:
+    try:
+        o1 = extract_values(my_model1([smi]))[0]
+        o2 = extract_values(my_model2([smi]))[0]
+        o3 = extract_values(my_model3([smi]))[0]
+        results.append([o1, o2, o3])
+    except Exception:
+        results.append(["", "", ""])
 
 with open(output_file, "w") as f:
     writer = csv.writer(f)
     writer.writerow(["cytotoxicity_hepg2", "cytotoxicity_hskmc", "cytotoxicity_imr90"])  # header with column names
-    for o1, o2, o3 in zip(outputs1, outputs2, outputs3):
-        writer.writerow([o1, o2, o3])
+    for row in results:
+        writer.writerow(row)
