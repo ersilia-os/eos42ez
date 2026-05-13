@@ -1,7 +1,7 @@
 {
     "Identifier": "eos42ez",
     "Slug": "antibiotics-ai-cytotox",
-    "Status": "In maintenance",
+    "Status": "Ready",
     "Title": "Human cytotoxicity endpoints",
     "Description": "The authors tested the dataset of 39312 compounds used to train the antibiotics-ai model (eos18ie) against several cytotoxicity endpoints; human liver carcinoma cells (HepG2), human primary skeletal muscle cells (HSkMCs) and human lung fibroblast cells (IMR-90). Cellular viability was measured after 20133 days of treatment with each compound at 10 \u03bcM and activities were binarized using a 90% cell viability cut-off. 341 (8.5%), 490 (3.8%) and 447 (8.8%) compounds classified as cytotoxic for HepG2 cells, HSk-MCs and IMR-90 cells",
     "Deployment": [
@@ -37,16 +37,19 @@
     "License": "MIT",
     "Contributor": "Richiio",
     "Incorporation Date": "2024-02-05",
-    "Last Packaging Date": "2026-03-23",
+    "Last Packaging Date": "2026-05-13",
     "Release": "v1.0.1",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos42ez",
-    "Docker Architecture": "AMD64",
+    "Docker Architecture": [
+        "AMD64",
+        "ARM64"
+    ],
     "Model Size": 1401.0,
     "Environment Size": 5610.0,
-    "Image Size": 7136.59,
-    "Computational Performance 1": 64.03,
-    "Computational Performance 2": 277.34,
+    "Image Size": 7138.56,
+    "Computational Performance 1": 62.24,
+    "Computational Performance 2": 264.06,
     "Computational Performance 3": -1.0,
     "Computational Performance 4": -1.0,
     "Computational Performance 5": -1.0,
