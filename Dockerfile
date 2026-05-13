@@ -10,6 +10,7 @@ RUN pip install pandas==2.2.0
 RUN pip install tensorboardX==2.0
 RUN pip install hyperopt==0.2.7
 RUN pip install protobuf==3.20.0
+RUN pip install setuptools==70.3.0
 #---dependencyes from descriptastorus
 RUN pip install packaging==24.2
 RUN pip install pandas-flavor==0.6.0
