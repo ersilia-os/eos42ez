@@ -52,7 +52,7 @@ Below are the **Output Columns** of the model:
 
 ### References
 - **Source Code**: [https://github.com/felixjwong/antibioticsai](https://github.com/felixjwong/antibioticsai)
-- **Publication**: [https://www.nature.com/articles/s41586-023-06887-8](https://www.nature.com/articles/s41586-023-06887-8)
+- **Publication**: [https://doi.org/10.1038/s41586-023-06887-8](https://doi.org/10.1038/s41586-023-06887-8)
 - **Publication Type:** `Peer reviewed`
 - **Publication Year:** `2023`
 - **Ersilia Contributor:** [Richiio](https://github.com/Richiio)
