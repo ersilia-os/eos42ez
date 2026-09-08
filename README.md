@@ -28,9 +28,9 @@ This model was incorporated on 2024-02-05.Last packaged on 2026-05-13.
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
 |------|------|-----------|-------------|
-| cytotoxicity_hepg2 | float | low | Predicted cytotoxicity of the compound against human liver carcinoma cells (HepG2). The value is between 0 and 1 where 0 means non-toxic and 1 means toxic |
-| cytotoxicity_hskmc | float | low | Predicted cytotoxicity of the compound against human primary skeletal muscle cells (HSkMC). The value is between 0 and 1 where 0 means non-toxic and 1 means toxic |
-| cytotoxicity_imr90 | float | low | Predicted cytotoxicity of the compound against human lung fibroblast cells (IMR-90). The value is between 0 and 1 where 0 means non-toxic and 1 means toxic |
+| cytotoxicity_hepg2 | float | high | Predicted cytotoxicity of the compound against human liver carcinoma cells (HepG2). The value is between 0 and 1 where 0 means non-toxic and 1 means toxic |
+| cytotoxicity_hskmc | float | high | Predicted cytotoxicity of the compound against human primary skeletal muscle cells (HSkMC). The value is between 0 and 1 where 0 means non-toxic and 1 means toxic |
+| cytotoxicity_imr90 | float | high | Predicted cytotoxicity of the compound against human lung fibroblast cells (IMR-90). The value is between 0 and 1 where 0 means non-toxic and 1 means toxic |
 
 
 ### Source and Deployment
