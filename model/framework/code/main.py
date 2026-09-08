@@ -3,6 +3,7 @@ import csv
 import sys
 
 import chemprop
+from chemprop.train.make_predictions import load_model
 
 # parse arguments
 input_file = sys.argv[1]
@@ -10,58 +11,51 @@ output_file = sys.argv[2]
 
 # current file directory
 root = os.path.dirname(os.path.abspath(__file__))
-hepg_model = os.path.abspath(os.path.join(root, "..", "..", "checkpoints", "cytotox_hepg2"))
-HSK_model = os.path.abspath(os.path.join(root, "..", "..", "checkpoints", "cytotox_primary"))
-IMR_model = os.path.abspath(os.path.join(root, "..", "..", "checkpoints", "cytotox_imr90"))
+checkpoints = os.path.abspath(os.path.join(root, "..", "..", "checkpoints"))
 
-def my_model1(smiles_list):
+# one checkpoint directory per cytotoxicity endpoint, in output column order
+MODELS = [
+    os.path.join(checkpoints, "cytotox_hepg2"),
+    os.path.join(checkpoints, "cytotox_primary"),
+    os.path.join(checkpoints, "cytotox_imr90"),
+]
 
-    smiles_list_list= [[smiles] for smiles in smiles_list]
+
+def predict(checkpoint_dir, smiles_list):
+    """Predict for every molecule with one ensemble, loading it only once.
+
+    The ensemble is loaded up front with load_model() and handed to
+    make_predictions() as model_objects, so the 11 checkpoints are read once for
+    the whole batch instead of once per molecule.
+    """
     arguments = [
-    '--test_path', '/dev/null',
-    '--preds_path', '/dev/null',
-    '--checkpoint_dir', hepg_model,
-    '--features_generator', 'rdkit_2d_normalized',
-    '--no_features_scaling'
+        "--test_path", "/dev/null",
+        "--preds_path", "/dev/null",
+        "--checkpoint_dir", checkpoint_dir,
+        "--features_generator", "rdkit_2d_normalized",
+        "--no_features_scaling",
+        "--num_workers", "0",
     ]
-
     args = chemprop.args.PredictArgs().parse_args(arguments)
-    preds = chemprop.train.make_predictions(args=args, smiles=smiles_list_list)
+    model_objects = load_model(args, generator=False)
+    preds = chemprop.train.make_predictions(
+        args=args,
+        smiles=[[smiles] for smiles in smiles_list],
+        model_objects=model_objects,
+    )
     return preds
 
-def my_model2(smiles_list):
 
-    smiles_list_list= [[smiles] for smiles in smiles_list]
-    arguments = [
-    '--test_path', '/dev/null',
-    '--preds_path', '/dev/null',
-    '--checkpoint_dir', HSK_model,
-    '--features_generator', 'rdkit_2d_normalized',
-    '--no_features_scaling'
-    ]
+def as_float_string(prediction):
+    """Return the prediction as a string, or "" if it is not a number.
 
-    args = chemprop.args.PredictArgs().parse_args(arguments)
-    preds = chemprop.train.make_predictions(args=args, smiles=smiles_list_list)
-    return preds
+    Invalid SMILES come back from chemprop as the string "Invalid SMILES".
+    """
+    try:
+        return str(float(prediction[0]))
+    except (TypeError, ValueError, IndexError):
+        return ""
 
-def my_model3(smiles_list):
-
-    smiles_list_list= [[smiles] for smiles in smiles_list]
-    arguments = [
-    '--test_path', '/dev/null',
-    '--preds_path', '/dev/null',
-    '--checkpoint_dir', IMR_model,
-    '--features_generator', 'rdkit_2d_normalized',
-    '--no_features_scaling'
-    ]
-
-    args = chemprop.args.PredictArgs().parse_args(arguments)
-    preds = chemprop.train.make_predictions(args=args, smiles=smiles_list_list)
-    return preds
-
-# Function to extract desired values from model predictions
-def extract_values(predictions):
-    return [str(prediction[0]) for prediction in predictions]
 
 # Read SMILES from .csv file
 with open(input_file, "r") as f:
@@ -69,19 +63,19 @@ with open(input_file, "r") as f:
     next(reader)  # skip header
     smiles_list = [r[0] for r in reader]
 
-# Run models per molecule with try/except safety net
-results = []
-for smi in smiles_list:
+# Run each ensemble over the whole batch, freeing it before loading the next one
+columns = []
+for checkpoint_dir in MODELS:
     try:
-        o1 = extract_values(my_model1([smi]))[0]
-        o2 = extract_values(my_model2([smi]))[0]
-        o3 = extract_values(my_model3([smi]))[0]
-        results.append([o1, o2, o3])
+        preds = predict(checkpoint_dir, smiles_list)
+        column = [as_float_string(p) for p in preds]
+        column += [""] * (len(smiles_list) - len(column))  # never write a short column
+        columns.append(column)
     except Exception:
-        results.append(["", "", ""])
+        columns.append([""] * len(smiles_list))
 
 with open(output_file, "w") as f:
     writer = csv.writer(f)
     writer.writerow(["cytotoxicity_hepg2", "cytotoxicity_hskmc", "cytotoxicity_imr90"])  # header with column names
-    for row in results:
-        writer.writerow(row)
+    for i in range(len(smiles_list)):
+        writer.writerow([column[i] for column in columns])
