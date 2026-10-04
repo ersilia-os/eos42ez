@@ -1,6 +1,6 @@
 # Human cytotoxicity endpoints
 
-The authors tested the dataset of 39312 compounds used to train the antibiotics-ai model (eos18ie) against several cytotoxicity endpoints; human liver carcinoma cells (HepG2), human primary skeletal muscle cells (HSkMCs) and human lung fibroblast cells (IMR-90). Cellular viability was measured after 20133 days of treatment with each compound at 10 μM and activities were binarized using a 90% cell viability cut-off. 341 (8.5%), 490 (3.8%) and 447 (8.8%) compounds classified as cytotoxic for HepG2 cells, HSk-MCs and IMR-90 cells
+Reports predicted cytotoxicity against three human cell types, liver carcinoma, primary skeletal muscle and lung fibroblast, so that antibacterial candidates can be screened for host toxicity at the same time as activity. The measurements come from the same 39,312-compound campaign that supported the accompanying antibiotic-activity work, where pairing potency with cytotoxicity was central to isolating selective structural classes. Cell-line assays capture direct cellular damage and do not anticipate toxicity arising through metabolism or accumulation.
 
 This model was incorporated on 2024-02-05.Last packaged on 2026-09-08.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2024-02-05.Last packaged on 2026-09-08.
 ### Output
 - **Output Dimension:** `3`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** Predicting cytotoxicity in  human liver carcinoma cells (HepG2), human primary skeletal muscle cells (HSkMCs) and human lung fibroblast cells (IMR-90)
+- **Interpretation:** Predicted cytotoxicity in HepG2, skeletal muscle and lung fibroblast cells, higher values indicating greater toxicity.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
