@@ -1,6 +1,6 @@
 # Human cytotoxicity endpoints
 
-Reports predicted cytotoxicity against three human cell types, liver carcinoma, primary skeletal muscle and lung fibroblast, so that antibacterial candidates can be screened for host toxicity at the same time as activity. The measurements come from the same 39,312-compound campaign that supported the accompanying antibiotic-activity work, where pairing potency with cytotoxicity was central to isolating selective structural classes. Cell-line assays capture direct cellular damage and do not anticipate toxicity arising through metabolism or accumulation.
+Reports predicted cytotoxicity against three human cell types, liver carcinoma (HepG2), primary skeletal muscle and lung fibroblast, so antibacterial candidates can be screened for host toxicity alongside activity. Wong and co-workers counter-screened the same 39,312-compound library behind the companion antibiotic model, reading viability two to three days after dosing at 10 uM and calling a compound cytotoxic below 90% viability, which labelled 8.5%, 3.8% and 8.8% of the library respectively. Cell assays catch direct cellular damage, not toxicity arising through metabolism or accumulation.
 
 This model was incorporated on 2024-02-05.Last packaged on 2026-09-08.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2024-02-05.Last packaged on 2026-09-08.
 ### Output
 - **Output Dimension:** `3`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** Predicted cytotoxicity in HepG2, skeletal muscle and lung fibroblast cells, higher values indicating greater toxicity.
+- **Interpretation:** Predicted cytotoxicity in liver carcinoma, skeletal muscle and lung fibroblast cells, using a 90% viability cut-off at 10 uM.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
