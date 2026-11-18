@@ -45,6 +45,7 @@
         "AMD64",
         "ARM64"
     ],
+    "Apptainer": "https://models-sif.s3.eu-north-1.amazonaws.com/eos42ez_v1.sif",
     "Model Size": 1401.0,
     "Environment Size": 5612.0,
     "Image Size": 7139.19,
