@@ -2,7 +2,8 @@
 
 Reports predicted cytotoxicity against three human cell types, liver carcinoma (HepG2), primary skeletal muscle and lung fibroblast, so antibacterial candidates can be screened for host toxicity alongside activity. Wong and co-workers counter-screened the same 39,312-compound library behind the companion antibiotic model, reading viability two to three days after dosing at 10 uM and calling a compound cytotoxic below 90% viability, which labelled 8.5%, 3.8% and 8.8% of the library respectively. Cell assays catch direct cellular damage, not toxicity arising through metabolism or accumulation.
 
-This model was incorporated on 2024-02-05.Last packaged on 2026-09-08.
+This model was incorporated on 2024-02-05.
+Last packaged on 2026-09-08.
 
 ## Information
 ### Identifiers
@@ -39,6 +40,7 @@ Below are the **Output Columns** of the model:
 - **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos42ez](https://hub.docker.com/r/ersiliaos/eos42ez)
 - **Docker Architecture:** `AMD64`, `ARM64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos42ez.zip)
+- **Apptainer**: [https://models-sif.s3.eu-north-1.amazonaws.com/eos42ez_v1.sif](https://models-sif.s3.eu-north-1.amazonaws.com/eos42ez_v1.sif)
 
 ### Resource Consumption
 - **Model Size (Mb):** `1401`
